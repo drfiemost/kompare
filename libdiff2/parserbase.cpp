@@ -58,7 +58,7 @@ QString ParserBase::escapePath( QString path )
 
 	// Enclose in quotes if path contains space
 	if ( path.contains( QLatin1Char( ' ' ) ) )
-		path = QStringLiteral("\"%1\"").arg(path);
+		path = QString("\"%1\"").arg(path);
 
 	return path;
 }
