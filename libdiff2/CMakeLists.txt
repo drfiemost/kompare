@@ -1,15 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
-project(LibKompareDiff2)
-
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# search packages used by KDE
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+set(CMAKE_AUTOMOC ON)
 
 set(komparediff2_SRCS
 	kompareprocess.cpp 
@@ -28,44 +17,9 @@ set(komparediff2_SRCS
 	stringlistpair.cpp)
 
 
-kde4_add_library(komparediff2 SHARED ${komparediff2_SRCS})
+add_library(libdiff2 OBJECT ${komparediff2_SRCS})
+set_property(TARGET libdiff2 PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-target_link_libraries(komparediff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
-
-set_target_properties(komparediff2 PROPERTIES VERSION ${GENERIC_LIB_VERSION}
-SOVERSION ${GENERIC_LIB_SOVERSION} )
-
-install(TARGETS komparediff2 EXPORT LibKompareDiff2Targets ${INSTALL_TARGETS_DEFAULT_ARGS})
+target_link_libraries(libdiff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
 
 add_subdirectory(tests)
-
-install(FILES
-    diff2export.h
-    settingsbase.h
-    diffsettings.h
-    komparemodellist.h
-    difference.h
-    diffmodel.h
-    diffmodellist.h
-    marker.h
-    kompare.h
-    diffhunk.h
-    DESTINATION ${INCLUDE_INSTALL_DIR}/libkomparediff2  COMPONENT Devel
-)
-
-# Config.cmake file.
-configure_file( "${CMAKE_SOURCE_DIR}/LibKompareDiff2Config.cmake.in" "${CMAKE_BINARY_DIR}/LibKompareDiff2Config.cmake" @ONLY )
-
-if(KDE4_USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
-    set(_LibKompareDiff2_CONFIG_DEST "${LIB_INSTALL_DIR}/cmake/libkomparediff2")
-else(KDE4_USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
-    set(_LibKompareDiff2_CONFIG_DEST "${LIB_INSTALL_DIR}/libkomparediff2")
-endif(KDE4_USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
-
-install( FILES
-        "${CMAKE_BINARY_DIR}/LibKompareDiff2Config.cmake"
-        DESTINATION "${_LibKompareDiff2_CONFIG_DEST}" )
-install( EXPORT LibKompareDiff2Targets
-         DESTINATION "${_LibKompareDiff2_CONFIG_DEST}"
-         NAMESPACE LibKompareDiff2Import__
-         FILE LibKompareDiff2Targets.cmake )

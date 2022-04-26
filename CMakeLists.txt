@@ -10,9 +10,9 @@ find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
-find_package(LibKompareDiff2 REQUIRED)
-include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} ${LIBKOMPAREDIFF2_INCLUDE_DIR})
+include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
+add_subdirectory( libdiff2 )
 add_subdirectory( doc )
 add_subdirectory( interfaces )
 add_subdirectory( libdialogpages )
@@ -20,7 +20,7 @@ add_subdirectory( komparenavtreepart )
 add_subdirectory( komparepart )
 add_subdirectory( pics )
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/komparepart
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/libdiff2
                      ${CMAKE_CURRENT_SOURCE_DIR}/libdialogpages
                      ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_CURRENT_SOURCE_DIR}/komparenavtreepart
@@ -39,7 +39,7 @@ kde4_add_app_icon(kompare_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-kompare
 
 kde4_add_executable(kompare ${kompare_SRCS})
 
-target_link_libraries(kompare  kompareinterface ${LIBKOMPAREDIFF2_LIBRARIES} komparedialogpages ${KDE4_KTEXTEDITOR_LIBS} )
+target_link_libraries(kompare  kompareinterface $<TARGET_OBJECTS:libdiff2> komparedialogpages ${KDE4_KTEXTEDITOR_LIBS} )
 
 install(TARGETS kompare  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

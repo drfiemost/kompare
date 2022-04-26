@@ -36,5 +36,3 @@ void SettingsBase::loadSettings( KConfig* /* config */ )
 void SettingsBase::saveSettings( KConfig* /* config */ )
 {
 }
-
-#include "settingsbase.moc"

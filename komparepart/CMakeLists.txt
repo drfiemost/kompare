@@ -1,5 +1,7 @@
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../libdialogpages ${CMAKE_CURRENT_SOURCE_DIR}/../interfaces  )
+include_directories( ${CMAKE_SOURCE_DIR}/libdialogpages
+                     ${CMAKE_SOURCE_DIR}/interfaces
+                     ${CMAKE_SOURCE_DIR}/libdiff2 )
 
 
 ########### next target ###############
@@ -21,7 +23,7 @@ kde4_add_plugin(komparepart ${komparepart_PART_SRCS})
 
 
 
-target_link_libraries(komparepart  ${KDE4_KPARTS_LIBS} komparedialogpages ${LIBKOMPAREDIFF2_LIBRARIES} kompareinterface )
+target_link_libraries(komparepart  ${KDE4_KPARTS_LIBS} komparedialogpages $<TARGET_OBJECTS:libdiff2> kompareinterface )
 
 install(TARGETS komparepart  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
