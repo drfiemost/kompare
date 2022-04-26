@@ -17,9 +17,15 @@ set(komparediff2_SRCS
 	stringlistpair.cpp)
 
 
-add_library(libdiff2 OBJECT ${komparediff2_SRCS})
-set_property(TARGET libdiff2 PROPERTY POSITION_INDEPENDENT_CODE ON)
+kde4_add_library(komparediff2 SHARED ${komparediff2_SRCS})
 
-target_link_libraries(libdiff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
+target_link_libraries(komparediff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
+
+set_target_properties(komparediff2 PROPERTIES VERSION ${GENERIC_LIB_VERSION}
+SOVERSION ${GENERIC_LIB_SOVERSION} )
+
+install(TARGETS komparediff2 EXPORT LibKompareDiff2Targets ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+target_link_libraries(komparediff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
 
 add_subdirectory(tests)
