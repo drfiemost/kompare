@@ -18,7 +18,7 @@ add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
 add_subdirectory( libdiff2 )
-add_subdirectory( doc )
+macro_optional_add_subdirectory( doc )
 add_subdirectory( interfaces )
 add_subdirectory( libdialogpages )
 add_subdirectory( komparenavtreepart )
