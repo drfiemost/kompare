@@ -34,6 +34,8 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/libdiff2
 
 ########### next target ###############
 
+set(CMAKE_AUTOMOC ON)
+
 set(kompare_SRCS
 main.cpp
 kompare_shell.cpp
