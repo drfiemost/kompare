@@ -180,7 +180,7 @@ template<class SequencePair> unsigned int LevenshteinTable<SequencePair>::create
 			west      = getContent( i-1, j ) + 1;
 			northwest = getContent( i-1, j-1 ) + cost;
 
-			setContent( i, j, qMin( north, qMin( west, northwest ) ) );
+			setContent( i, j, std::min( north, std::min( west, northwest ) ) );
 		}
 	}
 

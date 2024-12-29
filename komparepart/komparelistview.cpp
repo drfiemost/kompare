@@ -670,7 +670,7 @@ void KompareListViewDiffItem::applyDifference( bool apply )
 
 int KompareListViewDiffItem::maxHeight()
 {
-	int lines = qMax( m_difference->sourceLineCount(), m_difference->destinationLineCount() );
+	int lines = std::max( m_difference->sourceLineCount(), m_difference->destinationLineCount() );
 	if( lines == 0 )
 		return BLANK_LINE_HEIGHT;
 	else
@@ -866,7 +866,7 @@ void KompareListViewLineItem::paintText( QPainter* p, const QColor& bg, int colu
 		if ( prevValue < m_text->string().length() )
 		{
 			// Still have to draw some string without changes
-			textChunk = m_text->string().mid( prevValue, qMax( 1, m_text->string().length() - prevValue ) );
+			textChunk = m_text->string().mid( prevValue, std::max( 1, m_text->string().length() - prevValue ) );
 			expandTabs(textChunk, kompareListView()->settings()->m_tabToNumberOfSpaces, charsDrawn);
 //			kDebug(8104) << "TextChunk   = \"" << textChunk << "\"" << endl;
 			QFont font( p->font() );

@@ -70,7 +70,7 @@ public:
     }
     bool needFineGrainedOutput(unsigned int difference) const
     {
-        return difference <= qMax(m_lengthFirst, m_lengthSecond) / 2;
+        return difference <= std::max(m_lengthFirst, m_lengthSecond) / 2;
     }
     const static bool allowReplace = true;
 private:

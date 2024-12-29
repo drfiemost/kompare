@@ -530,7 +530,7 @@ QPair<QList<Difference*>, QList<Difference*> > DiffModel::linesChanged(const QSt
 		int nextDestinationListLine = destinationMarkerIter != destinationMarkers.constEnd() ? (*destinationMarkerIter)->offset() : terminatorLineNumber;
 
 		// Advance to the nearest marker
-		int linesToSkip = qMin(nextDestinationListLine - currentDestinationListLine, nextSourceListLine - currentSourceListLine);
+		int linesToSkip = std::min(nextDestinationListLine - currentDestinationListLine, nextSourceListLine - currentSourceListLine);
 		currentSourceListLine += linesToSkip;
 		currentDestinationListLine += linesToSkip;
 		Difference* diff = new Difference(sourceLineNumber + currentSourceListLine, destinationLineNumber + currentDestinationListLine);
