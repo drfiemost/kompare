@@ -30,7 +30,6 @@
 #include <klibloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kparts/componentfactory.h>
 #include <ksqueezedtextlabel.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
