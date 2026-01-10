@@ -39,8 +39,8 @@ public:
 	~ViewSettings();
 public:
 	// some virtual functions that will be overloaded from the base class
-	virtual void loadSettings( KConfig* config );
-	virtual void saveSettings( KConfig* config );
+	void loadSettings( KConfig* config ) override;
+	void saveSettings( KConfig* config ) override;
 	QColor colorForDifferenceType( int type, bool selected = false, bool applied = false );
 
 public:

@@ -30,7 +30,7 @@ public:
     ~KompareSaveOptionsBase();
 
 protected slots:
-    virtual void languageChange();
+    void languageChange() override;
 
 };
 

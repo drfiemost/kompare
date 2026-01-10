@@ -49,9 +49,9 @@ public:
 	DiffSettings* settings( void );
 
 public:
-	virtual void restore();
-	virtual void apply();
-	virtual void setDefaults();
+	void restore() override;
+	void apply() override;
+	void setDefaults() override;
 
 protected slots:
 	void slotShowRegExpEditor();

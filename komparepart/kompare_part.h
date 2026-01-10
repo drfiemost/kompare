@@ -91,43 +91,43 @@ public:
 	/**
 	 * Open and parse the diff file at diffUrl.
 	 */
-	virtual bool openDiff( const KUrl& diffUrl );
+	bool openDiff( const KUrl& diffUrl ) override;
 
 	/** Added on request of Harald Fernengel */
-	virtual bool openDiff( const QString& diffOutput );
+	bool openDiff( const QString& diffOutput ) override;
 
 	/** Open and parse the diff3 file at diff3Url */
-	virtual bool openDiff3( const KUrl& diff3URL );
+	bool openDiff3( const KUrl& diff3URL ) override;
 
 	/** Open and parse the file diff3Output with the output of diff3 */
-	virtual bool openDiff3( const QString& diff3Output );
+	bool openDiff3( const QString& diff3Output ) override;
 
 	/** Compare, with diff, source with destination */
-	virtual void compare( const KUrl& sourceFile, const KUrl& destinationFile );
+	void compare( const KUrl& sourceFile, const KUrl& destinationFile ) override;
 	
 	/** Compare a Source file to a custom Destination string */
-	virtual void compareFileString( const KUrl & sourceFile, const QString & destination);
+	void compareFileString( const KUrl & sourceFile, const QString & destination) override;
 	
 	/** Compare a custom Source string to a Destination file */
-	virtual void compareStringFile( const QString & source, const KUrl & destinationFile);
+	void compareStringFile( const QString & source, const KUrl & destinationFile) override;
 
 	/** Compare, with diff, source with destination */
-	virtual void compareFiles( const KUrl& sourceFile, const KUrl& destinationFile );
+	void compareFiles( const KUrl& sourceFile, const KUrl& destinationFile ) override;
 
 	/** Compare, with diff, source with destination */
-	virtual void compareDirs ( const KUrl& sourceDir, const KUrl& destinationDir );
+	void compareDirs ( const KUrl& sourceDir, const KUrl& destinationDir ) override;
 
 	/** Compare, with diff3, originalFile with changedFile1 and changedFile2 */
-	virtual void compare3Files( const KUrl& originalFile, const KUrl& changedFile1, const KUrl& changedFile2 );
+	void compare3Files( const KUrl& originalFile, const KUrl& changedFile1, const KUrl& changedFile2 ) override;
 
 	/** This will show the file and the file with the diff applied */
-	virtual void openFileAndDiff( const KUrl& file, const KUrl& diffFile );
+	void openFileAndDiff( const KUrl& file, const KUrl& diffFile ) override;
 
 	/** This will show the directory and the directory with the diff applied */
-	virtual void openDirAndDiff ( const KUrl& dir,  const KUrl& diffFile );
+	void openDirAndDiff ( const KUrl& dir,  const KUrl& diffFile ) override;
 
 	/** Reimplementing this because this one knows more about the real part then the interface */
-	virtual void setEncoding( const QString& encoding );
+	void setEncoding( const QString& encoding ) override;
 
 	// This is the interpart interface, it is signal and slot based so no "real" interface here
 	// All you have to do is connect the parts from your application.
@@ -180,9 +180,9 @@ protected:
 	 * when using openURL( const KUrl& ) or in our case also openDiff( const KUrl& );
 	 * return true when everything went ok, false if there were problems
 	 */
-	virtual bool openFile();
+	bool openFile() override;
 	// ... Uhm we return true without saving ???
-	virtual bool saveFile() { return true; };
+	bool saveFile() override { return true; };
 
 	// patchFile
 	bool patchFile(KUrl&);

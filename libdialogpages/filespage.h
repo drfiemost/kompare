@@ -53,9 +53,9 @@ public:
 
 public:
 	virtual void setSettings( FilesSettings* settings );
-	virtual void restore();
-	virtual void apply();
-	virtual void setDefaults();
+	void restore() override;
+	void apply() override;
+	void setDefaults() override;
 
 private:
 	QGroupBox*     m_firstGB;

@@ -45,9 +45,9 @@ public:
 	ViewSettings* m_settings;
 
 public:
-	virtual void restore();
-	virtual void apply();
-	virtual void setDefaults();
+	void restore() override;
+	void apply() override;
+	void setDefaults() override;
 
 public:
 	KColorButton* m_removedColorButton;
