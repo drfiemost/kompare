@@ -26,4 +26,6 @@ install(TARGETS komparediff2 EXPORT LibKompareDiff2Targets ${INSTALL_TARGETS_DEF
 
 target_link_libraries(komparediff2 ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
 
-add_subdirectory(tests)
+if(BUILD_TEST)
+    add_subdirectory(tests)
+endif()
